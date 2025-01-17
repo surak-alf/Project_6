@@ -1,11 +1,22 @@
-# scripts/data_scrape.py
+import pandas as pd
+import asyncio
+from dotenv import load_dotenv
+from telethon import TelegramClient
+from telethon.tl.functions.channels import GetMessagesRequest
+from telethon.tl.types import InputChannel, InputPeerChannel
+import asyncio
+import os
+import nest_asyncio
 
-from telethon import TelegramClient, events
-from telethon.tl.types import Message
+ # load environmental variable from .env file
+load_dotenv()
+
+api_id = os.getenv("api_id")
+api_hash= os.getenv("api_hash")
 
 # Replace with your API ID, hash, and session file
-api_id = 20471194
-api_hash = '336d1c62216638c341e58775efe2c4f9'
+api_id = api_id
+api_hash = 'api_hash'
 session_file = 'my_session' 
 
 async def scrape_messages(client, channel_username, limit=100):
